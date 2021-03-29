@@ -1,19 +1,22 @@
 import java.util.Objects;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import java.util.Objects;
 
-public abstract class UserID {
-    private int id; 
-    private static int nextId= 1; 
-    private String idValue; 
 
-    public UserID(){
-        id= nextId; 
-        nextId++; 
-    }
-    
-    public UserID(String idValue){
-        this();
-        this.idValue=idValue; 
-    }
+@MappedSuperclass
+public abstract UserID {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    public int getId(){
+      return id;
+  }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -26,30 +29,11 @@ public abstract class UserID {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idValue);
+        return Objects.hash(id);
     }
 
-    
 
 
-   
-    public int getId() {
-        return id;
-    }
 
-   
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    
-    public String getIdValue() {
-        return idValue;
-    }
-
-    
-    public void setIdValue(String idValue) {
-        this.idValue = idValue;
-    }
 
 }

@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
-public class AboutMe extends userProfileCreate {
+public class AboutMe extends UserID {
 
     @Size(max=500)
     private String aboutme;

@@ -12,27 +12,27 @@ import javax.validation.ValidatorFactory;
 
 public class UserProfiletests{
 
-  userProfileCreate new_User_1;
-  userProfileCreate new_User_2;
-  userProfileCreate new_User_3;
-  userProfileCreate new_User_4;
-  userProfileCreate new_User_5;
-  userProfileCreate new_User_6;
-  userProfileCreate new_User_7;
+  NewUser new_User_1;
+  NewUser new_User_2;
+  NewUser new_User_3;
+  NewUser new_User_4;
+  NewUser new_User_5;
+  NewUser new_User_6;
+  NewUser new_User_7;
   Validator validator;
 
 
 
 @Before
   public void setUp(){
-new_User_1 = new userProfileCreate("Izzy_Macchiato", "isabella_jones@gmail.com", "Izzy", "My favorite things in the world are coffee and cake",
+new_User_1 = new NewUser("Izzy_Macchiato", "isabella_jones@gmail.com", "Izzy", "My favorite things in the world are coffee and cake",
   "iheartcoffee");
-new_User_2 = new userProfileCreate("CoffeeFiend", "Stanley_Smith@yahoo.com", "S.", "Just here to drink that hot bean juice", "Passowrd");
-new_User_3 = new userProfileCreate("I_am_A_Latte", "ashleyAshley@outlook.com", "Ashley", null, "Passowrd" );
-new_User_4 = new userProfileCreate(null, "Stanley_Smith@yahoo.com", "Stan", "I forgot my Username", "whoops");
-new_User_5 = new userProfileCreate("Forgetful_Fred", null, "Freddy", "I forgot my email.", "oopsies");
-new_User_6 = new userProfileCreate("CoffeeFriend", "Friend@gmail.com", "Andy", "I like coffee.", null);
-new_User_7 = new userProfileCreate ("I_like_Coffee", "Fred@gmail.com", null, "My name is Fred. I chose to write it here instead.", "BadPassword");
+new_User_2 = new NewUser("CoffeeFiend", "Stanley_Smith@yahoo.com", "S.", "Just here to drink that hot bean juice", "Passowrd");
+new_User_3 = new NewUser("I_am_A_Latte", "ashleyAshley@outlook.com", "Ashley", null, "Passowrd" );
+new_User_4 = new NewUser(null, "Stanley_Smith@yahoo.com", "Stan", "I forgot my Username", "whoops");
+new_User_5 = new NewUser("Forgetful_Fred", null, "Freddy", "I forgot my email.", "oopsies");
+new_User_6 = new NewUser("CoffeeFriend", "Friend@gmail.com", "Andy", "I like coffee.", null);
+new_User_7 = new NewUser("I_like_Coffee", "Fred@gmail.com", null, "My name is Fred. I chose to write it here instead.", "BadPassword");
 }
 @Before
 public void validCheckSetup(){
@@ -45,17 +45,18 @@ public void validCheckSetup(){
 @Test
   public void generateUserId(){
 
-  assertEquals(1, new_User_2.getId().new_User_1.getId());
+  assertEquals(1, new_User_2.getId() - new_User_1.getId());
 }
 
   //Can I generate a profile with all information?
   @Test
   public void profileConstructorSetsAllFields(){
     assertTrue(new_User_1.getUsername().equals((String) new_User_1.getUsername()));
-    assertEquals("isabella_jones@gmail.com", new_User_1.UserEmail.getEmail().getValue() );
+    assertEquals("isabella_jones@gmail.com", new_User_1.getEmail());
     assertTrue(new_User_1.getFirstname().equals((String) new_User_1.getFirstname()));
     assertEquals("Izzy", new_User_1.getFirstname());
     assertEquals("My favorite things in the world are coffee and cake", new_User_1.getAboutme());
+    assertTrue(new_User_1.getAboutme() instanceof AboutMe);
     assertTrue(new_User_1.getPassword().equals((String) new_User_1.getPassword()));
   }
   //Can I generate a profile without AboutMe and password?
@@ -66,8 +67,7 @@ public void validCheckSetup(){
     assertEquals("CoffeeFiend", new_User_2.getUsername());
     assertTrue(new_User_2.getFirstname().equals((String) new_User_2.getFirstname()));
     assertEquals("Stan", new_User_2.getFirstname());
-    assertTrue(new_User_2.getEmail() instanceof UserEmail);
-    assertEquals("Stanley_Smith@yahoo.com", new_User_2.UserEmail.getValue());
+    assertTrue(new_User_2.getAboutme() instanceof AboutMe);
     assertEquals("Stanley_Smith@yahoo.com", new_User_2.getEmail());
 
   }
@@ -75,14 +75,12 @@ public void validCheckSetup(){
   public void constructorSetsWithoutFirstname(){
   assertTrue(new_User_7.getUsername().equals((String) new_User_7.getUsername()));
   assertEquals("I_like_Coffee", new_User_7.getUsername());
-  assertEquals("Fred@gmail.com", new_User_7.UserEmail.getValue());
   assertEquals("Fred@gmail.com", new_User_7.getEmail());
-  assertTrue(new_User_7.getEmail() instanceof UserEmail);
   assertTrue(new_User_7.getFirstname.equals(null));
   assertTrue(new_User_7.getFirstname.equals(new_User_7.getFirstname()));
   assertEquals(null, new_User_7.getFirstname());
   assertEquals("My name is Fred. I chose to write it here instead.", new_User_7.getAboutme());
-  assertTrue(new_User_7.getAboutme() instanceof AboutMe);
+    assertTrue(new_User_7.getAboutme() instanceof AboutMe);
   assertTrue(new_User_7.getPassword().equals(String) new_User_7.getPassword()));
 
 
@@ -95,13 +93,12 @@ public void validCheckSetup(){
   public void constructorSetsWithoutAboutMe(){
     assertTrue(new_User_3.getUsername().equals(String) new_User_3.getUsername()));
     assertEquals("I_am_A_Latte", new_User_3.getUsername());
-    assertTrue(new_User_3.getEmail() instanceof UserEmail);
     assertEquals("ashleyAshley@outlook.com", new_User_3.getEmail());
-    assertEquals("ashleyAshley@outlook.com", new_User_3.UserEmail().getValue());
     assertEquals("Ashley", new_User_3.getFirstname());
     assertTrue(new_User_3.getFirstname().equals(String) new_User_3.getFirstname()));
     assertTrue(new_User_3.getAboutme().equals(null));
     assertTrue(new_User_3.getAboutme() instanceof AboutMe);
+    assertEquals(null, new_User_1.getAboutme());
     assertTrue(new_User_3.getPassword().equals(String) new_User_3.getPassword()));
 
   }
@@ -131,7 +128,7 @@ public void validCheckSetup(){
   //Is there an error when I don't include a Username?
   @Test
   public void errorMessageWhenNoUserName(){
-    userProfileCreate new_User_8;
+    NewUser new_User_8;
     username.setUsername(null);
     Set<ConstraintViolation<new_User_8>> violations = validator.validate(username);
     assertFalse(violations.isEmpty());
@@ -141,7 +138,7 @@ public void validCheckSetup(){
   //Is there an error when I don't include an Email?
   @Test
   public void errorMessageWhenNoEmail(){
-  userProfileCreate new_User_9;
+  NewUser new_User_9;
   email.setEmail(null);
     Set<ConstraintViolation<new_User_9>> violations = validator.validate(email);
     assertFalse(violations.isEmpty());
