@@ -25,10 +25,10 @@ public class AboutMe extends userProfileCreate {
 
 }
 
-public String getAboutMe(){
+public String getAboutme(){
     return aboutme;
 }
-public String setAboutMe(String aboutme){
+public String setAboutme(String aboutme){
     this.aboutme = aboutme;
 }
 

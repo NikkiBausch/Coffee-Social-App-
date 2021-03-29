@@ -22,7 +22,7 @@ public class CreateUserController<createProfile> {
         model.addAttribute("Username", Username); 
         model.addAttribute("Email", Email); 
         model.addAttribute("Firstname", Firstname); 
-        model.addAttribute("Aboutme", Aboutme); 
+        model.addAttribute("AboutMe", AboutMe);
         model.addAttribute("Password", Password); 
     
    
@@ -33,7 +33,7 @@ public class CreateUserController<createProfile> {
     @PostMapping 
     public String processUserSignUp(@RequestParam String Email, @RequestParam String Username, @RequestParam String Firstname, @RequestParam String Aboutme,
     @RequestParam String Password){
-        User newUser = new User(Email, Username, Firstname, Aboutme, Password); 
+        User newUser = new User(email, username, firstname, aboutme, password);
         model.addAttribute("User", newUser);
 
     }

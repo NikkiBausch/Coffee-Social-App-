@@ -26,9 +26,9 @@ public class editUserProfileController<editProfile>{
     }
 
     @PostMapping 
-    public String changeUserInfo(@RequestParam String Email, @RequestParam String Username, @RequestParam String Firstname, @RequestParam String Aboutme,
+    public String changeUserInfo(@RequestParam String email, @RequestParam String username, @RequestParam String firstname, @RequestParam String aboutme,
     @RequestParam String Password, @RequestParam String coffeeTaste, @RequestParam String foodTaste){
-        User User = User(Email, Username, Firstname, Aboutme, coffeeTaste, foodTaste, Password); 
+        User User = User(email, username, firstname, aboutme, coffeeTaste, foodTaste, Password);
         model.addAttribute("User", User);
 
     }
