@@ -1,12 +1,14 @@
-import coffee-social-app\Models\newUserApplication.java;
-import coffee-social-app\Models\userProfileCreate; 
+import Models.newUserApplication.java;
+import Models.userProfileCreate; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Controller
+@RequestMapping("NewUserSignUp")
 public class CreateUserController<createProfile> {
 
 
@@ -20,15 +22,18 @@ public class CreateUserController<createProfile> {
         model.addAttribute("Username", Username); 
         model.addAttribute("Email", Email); 
         model.addAttribute("Firstname", Firstname); 
-        model.addAttribute("Aboutme", Aboutme); 
+        model.addAttribute("AboutMe", AboutMe);
         model.addAttribute("Password", Password); 
+    
+   
+}
         
-    }
+    
 
     @PostMapping 
     public String processUserSignUp(@RequestParam String Email, @RequestParam String Username, @RequestParam String Firstname, @RequestParam String Aboutme,
     @RequestParam String Password){
-        User newUser = new User(Email, Username, Firstname, Aboutme, Password); 
+        User newUser = new User(email, username, firstname, aboutme, password);
         model.addAttribute("User", newUser);
 
     }

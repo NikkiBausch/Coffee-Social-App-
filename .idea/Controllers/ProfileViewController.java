@@ -5,31 +5,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@Requestmapping("User")
+@Requestmapping("ViewProfile")
 public class ProfileViewController{
 
 
-    @GetMapping("Username")
+    @GetMapping("username")
     public String displayUserName() {
         return getUserName; 
     }
 
-    @GetMapping ("Firstname")
+    @GetMapping ("firstname")
     public String displayFirstName(){
         return getFirstName; 
     }
 
-    @GetMapping("AboutMe")
+    @GetMapping("aboutme")
     public String displayAboutMe(){
-        return getAboutMe; 
+        return getAboutme;
     }
 
-    @GetMapping("coffeeTastes")
+    @GetMapping("coffeeTaste")
         public String displayCoffeeTastes(){
             return getCoffeeTastes; 
         }
 
-    @GetMapping("foodTastes")
+    @GetMapping("foodTaste")
         public String displayFoodTastes(){
             return getFoodTastes;
         }
