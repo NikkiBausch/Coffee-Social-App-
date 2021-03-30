@@ -1,7 +1,10 @@
-import Models.UserEmail.java;
-import Models.AboutMe.java;
+package Models;
+
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+import javax.validation.Valid;
 import java.util.Objects;
 
 
@@ -21,7 +24,7 @@ public class NewUser extends UserID {
     @Email(message="Must be a valid email.")
     private String email;
 
-    @size(max=15, message = "Name cannot be longer than 15 characters.")
+    @Size(max=15, message = "Name cannot be longer than 15 characters.")
     private String firstname;
 
     private String password;
@@ -33,7 +36,7 @@ public class NewUser extends UserID {
 
 
 
-   public NewUser(String username, String email, String firstname, String password){
+    public NewUser(String username, String email, String firstname, String password){
         this.username = username;
         this.email= email;
         this.firstname = firstname;
@@ -44,10 +47,10 @@ public class NewUser extends UserID {
 
     @Override
     public boolean equals(Object o) {
-       if (this == o) return true;
-       if (o == null || getClass() != o.getClass()) return false;
-       NewUser entity = (NewUser) o;
-       return id == entity.id;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NewUser entity = (NewUser) o;
+        return id == entity.id;
     }
 
     @Override
@@ -64,27 +67,27 @@ public class NewUser extends UserID {
         return username;
     }
 
-    public void setUsername(String username) {
+    public String setUsername(String username) {
         this.username = username;
     }
 
-  public String getEmail() {
-    return email;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public String setEmail(String email) {
+        this.email = email;
+    }
 
-  public void getFirstname(){
-      return firstname;
-  }
+    public String getFirstname(){
+        return firstname;
+    }
 
-  public void setFirstname(){
-      return firstname;
-  }
+    public String setFirstname(){
+        return firstname;
+    }
 
-  public String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -92,7 +95,7 @@ public class NewUser extends UserID {
 
     @Override
     public String toString(){
-      return username + email;
+        return username + email;
     }
 
 }
