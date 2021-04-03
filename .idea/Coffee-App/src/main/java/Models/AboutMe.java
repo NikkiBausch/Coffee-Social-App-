@@ -1,48 +1,43 @@
 package Models;
 
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+import javax.validation.Valid;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-//Add annotation
-public class AboutMe extends UserID {
+@Entity
+public class AboutMe extends AbstractEntity {
+
+@OneToMany
+@JoinColumn(name="about_me")
+private List <NewUser> Users = new ArrayList<>();
+
 
     @Size(max=500)
     private String aboutme;
 
-    @Size(max=200)
-    private String coffeeTaste;
+    public AboutMe(){
 
-    @Size(max=200)
-    private String foodTaste;
+    }
 
-
-
-    public AboutMe(){}
-
-
-
-    public String getAboutme(){
+    public String getAboutme() {
         return aboutme;
     }
-    public void setAboutme(String aboutme){
+
+    public void setAboutme(String aboutme) {
         this.aboutme = aboutme;
     }
 
-    public String getCoffeeTaste(){
-        return coffeeTaste;
+    public List<NewUser> getUsers(){
+        return Users;
     }
 
-    public void setCoffeeTaste(String coffeeTaste){
-        this.coffeeTaste= coffeeTaste;
-    }
-
-    public String getFoodTaste(){
-        return foodTaste;
-    }
-
-    public  void  setFoodTaste(String foodTaste){
-        this.foodTaste= foodTaste;
-    }
-
-
+    public void setUsers(List<NewUser> Users){
+    this.Users = Users; }
 }

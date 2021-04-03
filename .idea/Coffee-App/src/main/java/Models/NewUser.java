@@ -1,101 +1,84 @@
 package Models;
 
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Email;
-import javax.validation.Valid;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
+import javax.persistence.*;
 
 
 
+@Entity
+public class NewUser extends AbstractEntity {
 
-public class NewUser extends UserID {
+    @ManyToOne
+    private AbstractEntity username;
 
+    @ManyToOne
+    private UserEmail email;
 
+    @ManyToOne
+    private FirstName firstname;
 
+    @ManyToOne
+    private AboutMe aboutme;
 
-    @NotBlank(message = "Field, 'Username', is required.")
-    @Size(min=3, max=15, message = "Username must be between 3 and 15 characters.")
-    private String username;
-
-    @Valid
-    @NotBlank(message = "Field, 'Email', is required.")
-    @Email(message="Must be a valid email.")
-    private String email;
-
-    @Size(max=15, message = "Name cannot be longer than 15 characters.")
-    private String firstname;
-
-    private String password;
-
-
-    public NewUser() {
+    public NewUser(){
 
     }
 
-
-
-    public NewUser(String username, String email, String firstname, String password){
-        this.username = username;
-        this.email= email;
-        this.firstname = firstname;
-        this.password = password;
-
+    public NewUser(AbstractEntity aUsername, UserEmail anEmail, FirstName aFirstname, AboutMe anAboutme){
+        this.username = aUsername;
+        this.email = anEmail;
+        this.firstname = aFirstname;
+        this.aboutme = anAboutme;
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        NewUser entity = (NewUser) o;
-        return id == entity.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-
-    public String getUsername() {
+    public AbstractEntity getUsername(String username){
         return username;
     }
 
-    public String setUsername(String username) {
-        this.username = username;
+    public AbstractEntity setUsername(String username){
+        this.username= username;
     }
 
-    public String getEmail() {
+    public UserEmail getEmail(){
         return email;
     }
-
-    public String setEmail(String email) {
+    public void setEmail(UserEmail email){
         this.email = email;
     }
 
-    public String getFirstname(){
+    public FirstName getFirstname(){
         return firstname;
     }
 
-    public String setFirstname(){
-        return firstname;
+    public void setFirstname(FirstName firstname){
+        this.firstname= firstname;
     }
 
-    public String getPassword() {
-        return password;
+    public AboutMe getAboutme(){
+        return aboutme;
+    }
+
+    public void setAboutme(AboutMe aboutme){
+        this.aboutme= aboutme;
     }
 
 
 
-    @Override
-    public String toString(){
-        return username + email;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
