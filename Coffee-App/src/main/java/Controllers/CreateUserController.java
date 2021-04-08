@@ -1,8 +1,7 @@
 package Controllers;
 
+import Data.NewUserRepository;
 import Models.NewUser;
-import Models.newUserApplication.java;
-import Models.userProfileCreate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,11 @@ import java.util.Objects;
 @RestController
 @RequestMapping("NewUserSignUp")
 public class CreateUserController {
+
+    @Autowired
+    private NewUserRepository newUserRepository;
+
+
 
 
 
