@@ -28,8 +28,8 @@ public class FormController {
 
     //display Review form
     @GetMapping("create")
-    public String displayReviewForm(@RequestParam DatePicker datepicker, @RequestParam String nameOfBusiness, @RequestParam BeverageName beverageName, @RequestParam Atmosphere atmosphere, @RequestParam OverallRating overallRating, @RequestParam String summary){
-        NewReview newReview = new NewReview(datepicker, nameOfBusiness, beverageName, atmosphere, overallRating, summary );
+    public String displayReviewForm(@RequestParam String datePicker, @RequestParam String nameOfBusiness, @RequestParam BeverageName beverageName, @RequestParam Atmosphere atmosphere, @RequestParam OverallRating overallRating, @RequestParam String summary){
+        NewReview newReview = new NewReview(datePicker, nameOfBusiness, beverageName, atmosphere, overallRating, summary );
 
         return "reviews/create";
 

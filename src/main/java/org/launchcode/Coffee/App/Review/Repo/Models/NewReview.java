@@ -21,12 +21,14 @@ public class NewReview {
 
     @Id
     @GeneratedValue
+    @JoinColumn(name="id")
     private int id;
 
     //DatePicker enum is functional, but contains test dropdown menu items and needs attention.
     @JoinColumn(name="date_id")
     @NotNull(message= "Date required.")
-    private DatePicker datepicker;
+    @PastOrPresent(message="has to be a date in the past or today's date.")
+    private String datePicker;
 
     @JoinColumn(name="business_name")
     @NotBlank(message= "Name of Business required.")
@@ -55,8 +57,8 @@ public class NewReview {
     @Size(max=1000, message="Review Summary must be 1000 characters or under.")
     private String summary;
 
-    public NewReview(DatePicker datepicker, String nameOfBusiness, BeverageName beverageName, Atmosphere atmosphere, OverallRating overallRating, String summary) {
-        this.datepicker = datepicker;
+    public NewReview(String datePicker, String nameOfBusiness, BeverageName beverageName, Atmosphere atmosphere, OverallRating overallRating, String summary) {
+        this.datePicker = datePicker;
         this.nameOfBusiness = nameOfBusiness;
         this.beverageName = beverageName;
         this.atmosphere = atmosphere;
@@ -71,12 +73,12 @@ public class NewReview {
     }
 
 
-    public DatePicker getDatePicker() {
-        return datepicker;
+    public String getDatePicker() {
+        return datePicker;
     }
 
-    public void setDatePicker(DatePicker datepicker) {
-        this.datepicker = datepicker;
+    public void setDatePicker(String datePicker) {
+        this.datePicker = datePicker;
     }
 
     public String getNameOfBusiness() {
