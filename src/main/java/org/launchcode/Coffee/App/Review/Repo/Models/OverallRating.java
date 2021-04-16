@@ -1,15 +1,21 @@
 package org.launchcode.Coffee.App.Review.Repo.Models;
 
 public enum OverallRating {
-    ONESTAR("one star"),
+    ONE( "The Worst!"),
 
-    TWOSTARS("two stars"),
+    TWO(  "Not Completely Horrible"),
 
-    THREESTARS("three stars"),
+    THREE("Eh"),
 
-    FOURSTARS("four stars"),
+    FOUR( "Pretty Good!"),
 
-    FIVESTARS("five stars");
+    FIVE(   "Amazing!");
+
+
+
+
+
+
 
     private final String displayRating;
 
