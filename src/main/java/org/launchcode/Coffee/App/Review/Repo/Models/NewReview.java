@@ -24,7 +24,7 @@ public class NewReview {
     @JoinColumn(name="id")
     private int id;
 
-    //DatePicker enum is functional, but contains test dropdown menu items and needs attention.
+    //DatePicker enum is functional
     @JoinColumn(name="date_id")
     @NotNull(message= "Date required.")
     @PastOrPresent(message="has to be a date in the past or today's date.")
@@ -47,6 +47,7 @@ public class NewReview {
     @NotNull(message="Please select an atmosphere type, or other if unknown.")
     private Atmosphere atmosphere;
 
+    //Changed to more descriptive display names.
     @JoinColumn(name="overall_rating")
     @NotNull(message="Rating required")
     private OverallRating overallRating;
