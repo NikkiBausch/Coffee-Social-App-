@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("reviews")
+@RequestMapping("api/NewReview") //API URL for forms
 public class FormController {
 
     @Autowired
@@ -28,8 +28,8 @@ public class FormController {
 
     //display Review form
     @GetMapping("create")
-    public String displayReviewForm(@RequestParam String datePicker, @RequestParam String nameOfBusiness, @RequestParam BeverageName beverageName, @RequestParam Atmosphere atmosphere, @RequestParam OverallRating overallRating, @RequestParam String summary){
-        NewReview newReview = new NewReview(datePicker, nameOfBusiness, beverageName, atmosphere, overallRating, summary );
+    public String displayReviewForm(@RequestParam String dateOfVisit, @RequestParam String nameOfBusiness, @RequestParam BeverageName beverageName, @RequestParam Atmosphere atmosphere, @RequestParam OverallRating overallRating, @RequestParam String summary){
+        NewReview newReview = new NewReview(dateOfVisit, nameOfBusiness, beverageName, atmosphere, overallRating, summary );
 
         return "reviews/create";
 

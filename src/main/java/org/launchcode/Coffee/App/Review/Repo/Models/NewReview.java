@@ -28,7 +28,7 @@ public class NewReview {
     @JoinColumn(name="date_id")
     @NotNull(message= "Date required.")
     @PastOrPresent(message="has to be a date in the past or today's date.")
-    private String datePicker;
+    private String dateOfVisit;
 
     @JoinColumn(name="business_name")
     @NotBlank(message= "Name of Business required.")
@@ -58,8 +58,8 @@ public class NewReview {
     @Size(max=1000, message="Review Summary must be 1000 characters or under.")
     private String summary;
 
-    public NewReview(String datePicker, String nameOfBusiness, BeverageName beverageName, Atmosphere atmosphere, OverallRating overallRating, String summary) {
-        this.datePicker = datePicker;
+    public NewReview(String dateOfVisit, String nameOfBusiness, BeverageName beverageName, Atmosphere atmosphere, OverallRating overallRating, String summary) {
+        this.dateOfVisit = dateOfVisit;
         this.nameOfBusiness = nameOfBusiness;
         this.beverageName = beverageName;
         this.atmosphere = atmosphere;
@@ -74,12 +74,12 @@ public class NewReview {
     }
 
 
-    public String getDatePicker() {
-        return datePicker;
+    public String getDateOfVisit() {
+        return dateOfVisit;
     }
 
-    public void setDatePicker(String datePicker) {
-        this.datePicker = datePicker;
+    public void setDateOfVisit(String dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
     }
 
     public String getNameOfBusiness() {
