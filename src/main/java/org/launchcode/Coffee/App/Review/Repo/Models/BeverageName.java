@@ -3,21 +3,14 @@ package org.launchcode.Coffee.App.Review.Repo.Models;
 
 
 public enum BeverageName {
-    DRIPCOFFEE("Drip coffee"),
-    CAPPUCCINO("Cappuccino"),
-    FILTERCOFFEE("Filter Coffee (French Press, Pour-over, etc.)"),
+    HOTCOFFEE("Hot Coffee"),
     LATTE("Latte"),
-    FLATWHITE("Flat White"),
-    LATTEMACCHIATO("Latte Macchiato"),
-    CAFEAULAIT("Cafe au Lait"),
-    MOCHACCINO("Mochachino/Mocha latte"),
-    MOKA("Moka"),
-    ESPRESSOSHOTS("Espresso shots"),
+    MACHIATO("Machiato"),
+    ESPRESSO("Espresso"),
     AMERICANO("Americano"),
     COLDBREW("Cold Brew"),
     ICEDCOFFEE("Iced Coffee"),
-    FRAPPE("Frappe"),
-    MATCHALATTE("Matcha Latte"),
+    FRAPPE("Frappucino"),
     TEA("Tea"),
     OTHER("Other");
 
