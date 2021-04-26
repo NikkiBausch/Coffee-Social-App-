@@ -1,5 +1,6 @@
 package org.launchcode.Coffee.App.Review.Repo.Models;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,10 +20,14 @@ import java.util.Objects;
 @Entity
 public class NewReview {
 
+    //Do I need a declaration for the date formatting?
+    //Id is not generating when I run tests with Frontend.
+    //getters and setters to get UserId
+
     @Id
     @GeneratedValue
-    @JoinColumn(name="id")
-    private int id;
+    @JoinColumn(name="Review_id")
+    private int reviewId;
 
     //DatePicker enum is functional
     @JoinColumn(name="date_id")
@@ -69,8 +74,23 @@ public class NewReview {
 
     public NewReview(){}
 
-    public int getId() {
-        return id;
+    @Override
+    public String toString(){
+
+        return "NewReview{" +
+                "dateOfVisit='" + dateOfVisit + '\''+
+                ",nameOfBusiness='" + nameOfBusiness + '\'' +
+                ",beverageName='" + beverageName + '\'' +
+                ",atmosphere='" + atmosphere + '\'' +
+                ",overallRating='" + overallRating + '\'' +
+                ",summary='" + summary + '\''+
+                '}';
+
+    }
+
+
+    public int getReviewId() {
+        return reviewId;
     }
 
 
@@ -121,22 +141,19 @@ public class NewReview {
     public void setSummary(String summary) {
         this.summary = summary;
     }
-    @Override
-    public String toString(){
-        return nameOfBusiness;
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NewReview newReview = (NewReview) o;
-        return id == newReview.id;
+        return reviewId == newReview.reviewId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getReviewId());
     }
 
 }
